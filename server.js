@@ -39,39 +39,13 @@ app.get("/location", (req, res) => {
               return console.error(error.message);
             }
             res.json(results[0][0].distanciaKm);
+            res.status(200);
             console.log(results[0][0].distanciaKm);
           }
         )
       // End of procedure
     );
 });
-
-// module.exports = function getDistance(address) {
-//   return fetch(
-//     `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`
-//   )
-//     .then((response) => response.json())
-//     .then(
-//       (data) =>
-//         // Call procedure
-//         connection.query(
-//           "CALL dev.CalculaDistancia('?','?');",
-//           [
-//             data.results[0].geometry.location.lat,
-//             data.results[0].geometry.location.lng,
-//           ],
-//           (error, results, fields) => {
-//             if (error) {
-//               return console.error(error.message);
-//             }
-//             res.json(results[0][0].distanciaKm);
-//             console.log(results[0][0].distanciaKm);
-//           }
-//         )
-//       // End of procedure
-//     );
-// };
-
 app.listen(process.env.PORT || 3000, () =>
   console.log("Server started on port 3000")
 );
