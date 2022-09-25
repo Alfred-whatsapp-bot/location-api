@@ -25,8 +25,8 @@ app.get("/location", (req, res) => {
     `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${apiKey}`
   )
     .then((response) => response.json())
-    .then(
-      (data) =>
+    .then((data) => {
+      if (data.status === "OK") {
         // Call procedure
         connection.query(
           "CALL zpzigit5o0jticwb.CalculaDistancia('?','?');",
@@ -38,13 +38,17 @@ app.get("/location", (req, res) => {
             if (error) {
               return console.error(error.message);
             }
-            res.json(results[0][0].distanciaKm);
             res.status(200);
+            res.json(results[0][0].distanciaKm);
             console.log(results[0][0].distanciaKm);
           }
-        )
-      // End of procedure
-    );
+        );
+        // End of procedure
+      } else {
+        res.status(400);
+        res.json("Endereço não encontrado");
+      }
+    });
 });
 app.listen(process.env.PORT || 3000, () =>
   console.log("Server started on port 3000")
