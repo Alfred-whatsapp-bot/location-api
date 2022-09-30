@@ -7,10 +7,10 @@ const cors = require("cors"); //npm i --save cors
 const mysql = require("mysql"); //npm i --save mysql
 require("dotenv").config(); //npm i --save dotenv
 const config = {
-  socketPath: "/cloudsql/alfred-database:southamerica-east1:alfred-bot-db",
-  user: "dev",
-  password: "root",
-  database: "alfred_bot",
+  socketPath: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USERNAME,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME,
   connectTimeout: 20000,
   waitForConnections: true,
   queueLimit: 0,
