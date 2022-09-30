@@ -7,7 +7,7 @@ const cors = require("cors"); //npm i --save cors
 const mysql = require("mysql"); //npm i --save mysql
 require("dotenv").config(); //npm i --save dotenv
 const config = {
-  host: "34.95.205.131",
+  socketPath: "/cloudsql/alfred-database:southamerica-east1:alfred-bot-db",
   user: "dev",
   password: "root",
   database: "alfred_bot",
