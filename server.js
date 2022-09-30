@@ -7,10 +7,11 @@ const cors = require("cors"); //npm i --save cors
 const mysql = require("mysql"); //npm i --save mysql
 require("dotenv").config(); //npm i --save dotenv
 const config = {
-  socketPath: "/cloudsql/" + process.env.CLOUD_SQL_CONNECTION_NAME,
-  user: process.env.DATABASE_USERNAME,
-  password: process.env.DATABASE_PASSWORD,
-  database: process.env.DATABASE_NAME,
+  user: process.env.DB_USER, // e.g. 'my-db-user'
+  password: process.env.DB_PASS, // e.g. 'my-db-password'
+  database: process.env.DB_NAME, // e.g. 'my-database'
+  socketPath: process.env.INSTANCE_UNIX_SOCKET, // e.g. '/cloudsql/project:region:instance'
+  // Specify additional properties here.
   waitForConnections: true,
   queueLimit: 0,
 };
