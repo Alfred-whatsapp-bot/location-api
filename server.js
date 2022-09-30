@@ -7,10 +7,10 @@ const cors = require("cors"); //npm i --save cors
 const mysql = require("mysql"); //npm i --save mysql
 require("dotenv").config(); //npm i --save dotenv
 const config = {
-  host: "qvti2nukhfiig51b.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-  user: "sa7f483b4shxxrq7",
-  password: "j9uazobqudc0zw61",
-  database: "zpzigit5o0jticwb",
+  host: "34.95.205.131",
+  user: "dev",
+  password: "root",
+  database: "alfred_bot",
 };
 const connection = mysql.createConnection(config, { multipleStatements: true });
 app.use(cors());
@@ -29,7 +29,7 @@ app.get("/location", (req, res) => {
       if (data.status === "OK") {
         // Call procedure
         connection.query(
-          "CALL zpzigit5o0jticwb.CalculaDistancia('?','?');",
+          "CALL alfred_bot.CalculaDistancia('?','?');",
           [
             data.results[0].geometry.location.lat,
             data.results[0].geometry.location.lng,
