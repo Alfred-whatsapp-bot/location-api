@@ -7,7 +7,7 @@ const cors = require("cors"); //npm i --save cors
 const mysql = require("mysql"); //npm i --save mysql
 require("dotenv").config(); //npm i --save dotenv
 const config = {
-  host: "34.95.205.131:3306",
+  host: "34.95.205.131",
   user: "dev",
   password: "root",
   database: "alfred_bot",
