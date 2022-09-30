@@ -11,8 +11,9 @@ const config = {
   user: "dev",
   password: "root",
   database: "alfred_bot",
+  connectTimeout: 20000,
+  waitForConnections: true,
   queueLimit: 0,
-  waitForConnection: true,
 };
 const connection = mysql.createConnection(config, { multipleStatements: true });
 app.use(cors());
