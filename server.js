@@ -19,7 +19,7 @@ const connection = mysql.createConnection(config, { multipleStatements: true });
 app.use(cors());
 
 // API key
-const apiKey = "AIzaSyBTJXLspQ0gYUFVe6gYUHCdIg26pZvWJxg";
+const apiKey = process.env.APIKEY;
 
 // Get the user's location
 app.get("/location", (req, res) => {
