@@ -4,17 +4,17 @@ const express = require("express"); //npm i --save express
 const fetch = require("node-fetch"); //npm i --save node-fetch
 const app = express();
 const cors = require("cors"); //npm i --save cors
-const mysql = require("mysql"); //npm i --save mysql
+const mysql = require("mysql2"); //npm i --save mysql2
 require("dotenv").config(); //npm i --save dotenv
 const config = {
-  socketPath: `/cloudsql/${process.env.INSTANCE_UNIX_SOCKET}`,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASS,
-  database: process.env.DB_NAME,
-  waitForConnections: true,
-  queueLimit: 0,
+  host: process.env.INSTANCE_HOST, // e.g. '127.0.0.1'
+  port: process.env.DB_PORT, // e.g. '3306'
+  user: process.env.DB_USER, // e.g. 'my-db-user'
+  password: process.env.DB_PASS, // e.g. 'my-db-password'
+  database: process.env.DB_NAME, // e.g. 'my-database'
 };
-const connection = mysql.createConnection(config, { multipleStatements: true });
+console.log(config);
+const connection = mysql.createPool(config);
 app.use(cors());
 
 // Get the user's location
