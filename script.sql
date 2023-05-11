@@ -1,5 +1,5 @@
 DELIMITER $$
-CREATE DEFINER=`dev`@`%` PROCEDURE `calculate_distance`(
+CREATE DEFINER=`dev`@`%` PROCEDURE `CalculaDistancia`(
     IN lat1 DECIMAL(10,6),
     IN lon1 DECIMAL(10,6),
     IN lat2 DECIMAL(10,6),
@@ -27,5 +27,5 @@ BEGIN
 END$$
 DELIMITER ;
 
-CALL calculate_distance(40.6892, -74.0445, 51.5074, -0.1278, @distance);
+CALL CalculaDistancia(40.6892, -74.0445, 51.5074, -0.1278, @distance);
 SELECT @distance;
