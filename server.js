@@ -28,8 +28,10 @@ app.get("/location", (req, res) => {
       if (data.status === "OK") {
         // Call procedure
         connection.query(
-          "CALL alfred_bot.CalculaDistancia('?','?');",
+          "CALL alfred_bot.CalculaDistancia('?','?','?','?');",
           [
+            data.results[0].geometry.location.lat,
+            data.results[0].geometry.location.lng,
             data.results[0].geometry.location.lat,
             data.results[0].geometry.location.lng,
           ],
